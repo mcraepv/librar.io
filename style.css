@@ -7,6 +7,63 @@ body {
   color: whitesmoke;
 }
 
+.container {
+  margin-top: 20px;
+  padding: 200px;
+}
+.welcome {
+  font-family: "Homemade Apple", cursive;
+  font-size: xx-large;
+  font-weight: bold;
+  text-align: center;
+}
+
+.button {
+  display: block;
+  max-width: 300px;
+  margin: auto;
+}
+
+.translucent-form-overlay {
+  max-width: 500px;
+  width: 100%;
+  background-color: rgba(54, 54, 54, 0.8);
+  padding: 20px;
+  color: #fefefe;
+  display: inline-block;
+  text-align: left;
+}
+
+.rounded {
+  border-radius: 25px;
+}
+
+.translucent-form-overlay .columns.row {
+  display: block;
+}
+
+.translucent-form-overlay h3,
+.translucent-form-overlay label {
+  color: #fefefe;
+}
+
+.translucent-form-overlay input,
+.translucent-form-overlay select {
+  color: #8a8a8a;
+}
+
+.translucent-form-overlay input::-webkit-input-placeholder {
+  color: #8a8a8a;
+}
+
+.translucent-form-overlay input:-ms-input-placeholder {
+  color: #8a8a8a;
+}
+
+.translucent-form-overlay input::placeholder {
+  color: #8a8a8a;
+}
+
 /* Color Scheme - blues & greys
 background-color: #938E94;
 background-color: #5D5C61;
