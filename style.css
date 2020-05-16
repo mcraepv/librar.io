@@ -7,12 +7,18 @@ body {
   color: whitesmoke;
 }
 
+.rounded {
+  border-radius: 25px;
+}
+
+/* Enter Page*/
 .container {
   margin-top: 20px;
   padding: 200px;
 }
+
 .welcome {
-  font-family: "Homemade Apple", cursive;
+  font-family: "Cedarville Cursive", cursive;
   font-size: xx-large;
   font-weight: bold;
   text-align: center;
@@ -21,21 +27,25 @@ body {
 .button {
   display: block;
   max-width: 300px;
-  margin: auto;
 }
 
+/*Search Page*/
+h3 {
+  text-align: center;
+}
+
+button {
+  align-items: center;
+}
 .translucent-form-overlay {
-  max-width: 500px;
-  width: 100%;
+  width: 985px;
   background-color: rgba(54, 54, 54, 0.8);
   padding: 20px;
   color: #fefefe;
   display: inline-block;
   text-align: left;
-}
-
-.rounded {
-  border-radius: 25px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .translucent-form-overlay .columns.row {
