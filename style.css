@@ -1,5 +1,9 @@
+body {
+  background-image: url("assets/grey-background2.jpg");
+}
+
 .callout {
-  background-color: #5d5c61;
+  background-color: #7395ae;
   color: whitesmoke;
 }
 
