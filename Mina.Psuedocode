@@ -9,3 +9,6 @@ Stretch Goals:
 create a ENTER/INTRO page - JS animation?
 scrolling bar with Top/Best sellers - NY times or USA Today top ten
 
+diary entry
+Create new book > Title queries API for book cover > user taken to form with entry Title
+queries moment.js for the date of entry > saves that info into firebase
