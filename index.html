@@ -3,21 +3,116 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Librar.io</title>
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+      href="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.min.css"
     />
-    <link rel="stylesheet" type="text/css" href="style.css" />
-    <title>Librar.io</title>
+    <link rel="stylesheet" href="style.css" />
   </head>
-
   <body>
-    <script
-      src="https://code.jquery.com/jquery-3.5.1.min.js"
-      integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
-      crossorigin="anonymous"
-    ></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script src="script.js"></script>
+    <!-- Start Top Bar -->
+    <div class="top-bar">
+      <div class="top-bar-left">
+        <ul class="menu">
+          <li class="menu-text">Librar.io</li>
+        </ul>
+      </div>
+      <div class="top-bar-right">
+        <ul class="menu">
+          <li><a href="#">About</a></li>
+          <li><a href="#">Contact</a></li>
+          <li><a href="#">Three</a></li>
+          <li><a href="#">Four</a></li>
+        </ul>
+      </div>
+    </div>
+    <!-- End Top Bar -->
+
+    <div class="callout medium">
+      <div class="row column text-center">
+        <h1>My Book Diary</h1>
+      </div>
+    </div>
+
+    <div class="medium-1 columns" data-sticky-container id="sidemenu">
+      <div class="sticky" data-sticky data-anchor="content">
+        <h4>Search Librar.io</h4>
+        <ul class="vertical menu">
+          <li><a href="#">Search Criteria</a></li>
+          <li><a href="#">Quiz</a></li>
+          <li><a href="#">Search History</a></li>
+          <li><a href="#">Book Diary</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="row" id="content">
+      <div class="medium-6 columns">
+        <div class="blog-post">
+          <h3>Book Diary 1 <small>Book Title</small></h3>
+          <img class="book image" src="https://placehold.it/300x300" />
+          <p>
+            Marshmallow cotton candy chupa chups soufflé. Sugar plum oat cake
+            pudding jujubes cheesecake. Marshmallow pie sweet topping muffin
+            lollipop. Jelly-o icing gingerbread croissant bonbon toffee. Toffee
+            toffee jelly icing jujubes ice cream chocolate bar. Soufflé sweet
+            chocolate marzipan croissant. Sweet roll toffee chocolate bar.
+          </p>
+        </div>
+      </div>
+
+      <div class="blog-post">
+        <h3>Book Diary 2 <small>Book Title 2</small></h3>
+        <img class="book image" src="https://placehold.it/300x300" />
+        <p>
+          Cupcake ipsum dolor sit amet jelly beans oat cake liquorice. Powder
+          brownie candy soufflé croissant sugar plum chocolate bar apple pie.
+          Bonbon gummies brownie. Wafer cupcake jelly beans icing carrot cake.
+          Gingerbread jujubes cheesecake biscuit cookie halvah caramels chupa
+          chups. Cake tiramisu sweet wafer candy gingerbread cotton candy candy.
+        </p>
+      </div>
+    </div>
+
+    <div class="row" id="content">
+      <div class="medium-6 columns">
+        <div class="blog-post">
+          <h3>Book Diary 3 <small>Book Title 3</small></h3>
+          <img class="thumbnail" src="https://placehold.it/300x300" />
+          <p>
+            Tiramisu halvah macaroon sweet roll chocolate cake pastry gummies
+            muffin lemon drops. Chocolate biscuit cake sweet roll dessert.
+            Liquorice cotton candy tootsie roll sesame snaps. Tart cupcake
+            tootsie roll fruitcake tart. Cake marshmallow toffee dragée carrot
+            cake marshmallow halvah sweet gingerbread.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="row column center">
+      <ul
+        class="pagination text-center"
+        role="navigation"
+        aria-label="Pagination"
+      >
+        <li class="disabled">Previous</li>
+        <li class="current">
+          <span class="show-for-sr">You're on page</span> 1
+        </li>
+        <li><a href="#" aria-label="Page 2">2</a></li>
+        <li><a href="#" aria-label="Page 3">3</a></li>
+        <li><a href="#" aria-label="Page 4">4</a></li>
+        <li><a href="#" aria-label="Next page">Next</a></li>
+      </ul>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.js"></script>
+    <script>
+      $(document).foundation();
+    </script>
+    <scrip src="script.js"></scrip>
   </body>
 </html>
