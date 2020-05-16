@@ -35,20 +35,27 @@ $(document).ready(function () {
       });
     });
   $("#sign-in").on("click", function (event) {
-    event.preventDefault();
     var provider = new firebase.auth.GoogleAuthProvider();
-    firebase.auth().signInWithPopup(provider);
     firebase
       .auth()
-      .getRedirectResult()
+      .signInWithPopup(provider)
       .then(function (result) {
-        if (result.credential) {
-          // This gives you a Google Access Token. You can use it to access the Google API.
-          var token = result.credential.accessToken;
-        }
+        // This gives you a Google Access Token. You can use it to access the Google API.
+        var token = result.credential.accessToken;
         // The signed-in user info.
         var user = result.user;
+        // ...
         console.log(user);
+        console.log(token);
+        console.log(result);
+        firebase.auth().onAuthStateChanged(function (user) {
+          if (user) {
+            // User is signed in.
+            console.log(user);
+          } else {
+            // No user is signed in.
+          }
+        });
       })
       .catch(function (error) {
         // Handle Errors here.
