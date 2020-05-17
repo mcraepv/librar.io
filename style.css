@@ -74,6 +74,14 @@ button {
   color: #8a8a8a;
 }
 
+#header {
+  margin-right: 65px;
+}
+
+#diaryBtn {
+  margin-top: 100px;
+}
+
 /* Color Scheme - blues & greys
 background-color: #938E94;
 background-color: #5D5C61;
