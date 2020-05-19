@@ -8,7 +8,7 @@ body {
 }
 
 .rounded {
-  border-radius: 25px;
+  border-radius: 10px;
 }
 
 /* Enter Page*/
@@ -25,8 +25,11 @@ body {
 }
 
 .button {
+  font-family: "Roboto", sans-serif;
   display: block;
   max-width: 300px;
+  background-color: #aaabb8 !important;
+  color: white !important;
 }
 
 /*Search Page*/
