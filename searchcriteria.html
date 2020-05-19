@@ -6,7 +6,9 @@
     <title>Librar.io</title>
     <link
       rel="stylesheet"
-      href="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.min.css"
+      href="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/css/foundation.min.css"
+      integrity="sha256-ogmFxjqiTMnZhxCqVmcqTvjfe1Y/ec4WaRj/aQPvn+I="
+      crossorigin="anonymous"
     />
     <link rel="stylesheet" href="style.css" />
   </head>
@@ -21,7 +23,7 @@
       <div class="top-bar-right">
         <ul class="menu">
           <li><a href="#">Search Librar.io</a></li>
-          <li><a href="#">Book Diary</a></li>
+          <li><a href="#">Book Journal</a></li>
           <li><a href="#">About</a></li>
           <li><a href="#">Contact</a></li>
           <li><a href="#">Sign In</a></li>
@@ -34,67 +36,75 @@
       <h1 class="text-center" id="header">Search</h1>
     </div>
 
-    <div class="translucent-form-overlay rounded">
-      <form>
-        <h3>Search for Books</h3>
-        <div class="row columns">
-          <label
-            >Keyword
-            <input
-              class="rounded"
-              type="text"
-              name="keyword"
-              placeholder="Any"
-            />
-          </label>
-        </div>
-        <div class="row columns">
-          <label
-            >Author
-            <input
-              class="rounded"
-              type="text"
-              name="keyword"
-              placeholder="Any"
-            />
-          </label>
-        </div>
-        <div class="row columns">
-          <label
-            >Genre
-            <select multiple class="rounded">
-              <option value="fiction">Fiction</option>
-              <option value="nonfiction">Non-Fiction</option>
-              <option value="suspense">Suspense</option>
-              <option value="mystery">Mystery</option>
-              <option value="romance">Romance</option>
-              <option value="History">Historical</option>
-              <option value="History">Historical</option>
-            </select>
-          </label>
-        </div>
-        <div class="row columns">
-          <label>
-            <input
-              class="rounded"
-              type="text"
-              name="Author"
-              placeholder="Any"
-            />
-          </label>
-        </div>
+    <div class="grid-container">
+      <div
+        class="translucent-form-overlay rounded grid-x grid-margin-x align-center"
+      >
+        <form>
+          <h3>Search for Books</h3>
+          <div class="row columns">
+            <label
+              >Keyword
+              <input
+                class="rounded"
+                type="text"
+                name="keyword"
+                placeholder="Any"
+              />
+            </label>
+          </div>
+          <div class="row columns">
+            <label
+              >Author
+              <input
+                class="rounded"
+                type="text"
+                name="keyword"
+                placeholder="Any"
+              />
+            </label>
+          </div>
+          <div class="row columns">
+            <label
+              >Genre
+              <select multiple class="rounded">
+                <option value="fiction">Fiction</option>
+                <option value="nonfiction">Non-Fiction</option>
+                <option value="suspense">Suspense</option>
+                <option value="mystery">Mystery</option>
+                <option value="romance">Romance</option>
+                <option value="History">Historical</option>
+                <option value="History">Sci-Fi</option>
+              </select>
+            </label>
+          </div>
+          <div class="row columns">
+            <label>
+              <input
+                class="rounded"
+                type="text"
+                name="Author"
+                placeholder="Any"
+              />
+            </label>
+          </div>
 
-        <button type="button" class="primary button search-button rounded">
-          Search
-        </button>
-        <button type="button" class="primary button clear-button rounded">
-          Clear
-        </button>
-      </form>
+          <button type="button" class="primary button search-button rounded">
+            Search
+          </button>
+          <button type="button" class="primary button clear-button rounded">
+            Clear
+          </button>
+        </form>
+      </div>
     </div>
 
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-    <script src="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/js/foundation.min.js"
+      integrity="sha256-pRF3zifJRA9jXGv++b06qwtSqX1byFQOLjqa2PTEb2o="
+      crossorigin="anonymous"
+    ></script>
     <script>
       $(document).foundation();
     </script>

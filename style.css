@@ -2,6 +2,14 @@ body {
   background-image: url("assets/grey-background2.jpg");
 }
 
+h3 {
+  text-align: center;
+}
+
+button {
+  align-items: center;
+}
+
 .callout {
   background-color: #7395ae;
   color: whitesmoke;
@@ -11,7 +19,6 @@ body {
   border-radius: 10px;
 }
 
-/* Enter Page*/
 .container {
   margin-top: 20px;
   padding: 200px;
@@ -32,14 +39,6 @@ body {
   color: white !important;
 }
 
-/*Search Page*/
-h3 {
-  text-align: center;
-}
-
-button {
-  align-items: center;
-}
 .translucent-form-overlay {
   width: 985px;
   background-color: rgba(54, 54, 54, 0.8);
