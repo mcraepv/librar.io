@@ -35,14 +35,13 @@
     <div class="callout">
       <h1 class="text-center" id="header">Search</h1>
     </div>
-
-    <div class="grid-container">
-      <div
-        class="translucent-form-overlay rounded grid-x grid-margin-x align-center"
-      >
-        <form>
+    <form>
+      <div class="grid-container">
+        <div
+          class="translucent-form-overlay rounded grid-x grid-margin-x align-center"
+        >
           <h3>Search for Books</h3>
-          <div class="row columns">
+          <div class="small-12 cell">
             <label
               >Keyword
               <input
@@ -53,7 +52,7 @@
               />
             </label>
           </div>
-          <div class="row columns">
+          <div class="small-12 cell">
             <label
               >Author
               <input
@@ -64,7 +63,7 @@
               />
             </label>
           </div>
-          <div class="row columns">
+          <div class="small-12 cell">
             <label
               >Genre
               <select multiple class="rounded">
@@ -74,11 +73,11 @@
                 <option value="mystery">Mystery</option>
                 <option value="romance">Romance</option>
                 <option value="History">Historical</option>
-                <option value="History">Sci-Fi</option>
+                <option value="SciFi">Sci-Fi</option>
               </select>
             </label>
           </div>
-          <div class="row columns">
+          <div class="small-12 cell">
             <label>
               <input
                 class="rounded"
@@ -95,10 +94,9 @@
           <button type="button" class="primary button clear-button rounded">
             Clear
           </button>
-        </form>
+        </div>
       </div>
-    </div>
-
+    </form>
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script
       src="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/js/foundation.min.js"
