@@ -2,34 +2,6 @@ body {
   background-image: url("assets/grey-background2.jpg");
 }
 
-.callout {
-  background-color: #7395ae;
-  color: whitesmoke;
-}
-
-.rounded {
-  border-radius: 25px;
-}
-
-/* Enter Page*/
-.container {
-  margin-top: 20px;
-  padding: 200px;
-}
-
-.welcome {
-  font-family: "Cedarville Cursive", cursive;
-  font-size: xx-large;
-  font-weight: bold;
-  text-align: center;
-}
-
-.button {
-  display: block;
-  max-width: 300px;
-}
-
-/*Search Page*/
 h3 {
   text-align: center;
 }
@@ -37,12 +9,42 @@ h3 {
 button {
   align-items: center;
 }
+
+.callout {
+  background-color: #7395ae;
+  color: whitesmoke;
+}
+
+.rounded {
+  border-radius: 10px;
+}
+
+.container {
+  margin-top: 20px;
+  padding: 200px;
+}
+
+.welcome {
+  font-family: "Cedarville Cursive", cursive;
+  font-size: 40px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.button {
+  font-family: "Roboto", sans-serif;
+  display: block;
+  max-width: 300px;
+  background-color: #aaabb8 !important;
+  color: white !important;
+}
+
 .translucent-form-overlay {
   width: 985px;
   background-color: rgba(54, 54, 54, 0.8);
   padding: 20px;
   color: #fefefe;
-  display: inline-block;
+  /*display: inline-block;*/
   text-align: left;
   margin-left: auto;
   margin-right: auto;
