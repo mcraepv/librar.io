@@ -10,6 +10,10 @@
       integrity="sha256-ogmFxjqiTMnZhxCqVmcqTvjfe1Y/ec4WaRj/aQPvn+I="
       crossorigin="anonymous"
     />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Abel&family=Cedarville+Cursive&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
@@ -22,19 +26,17 @@
       </div>
       <div class="top-bar-right">
         <ul class="menu">
-          <li><a href="#">Search Librar.io</a></li>
-          <li><a href="#">Book Journal</a></li>
-          <li><a href="#">About</a></li>
-          <li><a href="#">Contact</a></li>
-          <li><a href="#">Sign In</a></li>
+          <li><a href="searchcriteria.html">Search Librar.io</a></li>
+          <li><a href="index.html">Book Journal</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a id="sign-in">Sign In</a></li>
         </ul>
       </div>
     </div>
     <!-- End Top Bar -->
 
-    <div class="callout">
-      <h1 class="text-center" id="header">Search</h1>
-    </div>
+    <div class="callout"></div>
     <form>
       <div class="grid-container">
         <div
@@ -64,6 +66,17 @@
             </label>
           </div>
           <div class="small-12 cell">
+            <label>
+              Title
+              <input
+                class="rounded"
+                type="text"
+                name="Author"
+                placeholder="Any"
+              />
+            </label>
+          </div>
+          <div class="small-12 cell">
             <label
               >Genre
               <select multiple class="rounded">
@@ -77,23 +90,27 @@
               </select>
             </label>
           </div>
-          <div class="small-12 cell">
-            <label>
-              <input
-                class="rounded"
-                type="text"
-                name="Author"
-                placeholder="Any"
-              />
-            </label>
-          </div>
 
-          <button type="button" class="primary button search-button rounded">
-            Search
-          </button>
-          <button type="button" class="primary button clear-button rounded">
-            Clear
-          </button>
+          <div class="grid-x">
+            <div class="medium-8 cell margin-1">
+              <button
+                type="button"
+                class="primary button search-button rounded padding-10"
+                id="searchBtn"
+              >
+                Search
+              </button>
+            </div>
+          </div>
+          <div class="medium-2 cell">
+            <button
+              type="button"
+              class="primary button clear-button rounded"
+              id="clearBtn"
+            >
+              Clear
+            </button>
+          </div>
         </div>
       </div>
     </form>
