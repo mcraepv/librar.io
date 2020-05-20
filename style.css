@@ -18,9 +18,9 @@ h1 {
 /* Enter Page*/
 
 .welcome {
-  font-family: "Cedarville Cursive", cursive;
+  font-family: "Abel", sans-serif;
   font-size: 40px;
-  font-weight: bold;
+  text-align: center;
 }
 
 /*Search Page*/
