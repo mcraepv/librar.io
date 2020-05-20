@@ -7,7 +7,7 @@ h1 {
 }
 
 .callout {
-  background-color: #7395ae;
+  background-color: #25274d;
   color: whitesmoke;
 }
 
@@ -74,10 +74,16 @@ h1 {
   color: #8a8a8a;
 }
 
+#searchBtn,
+#clearBtn {
+  background-color: #25274d !important;
+}
+
 /* Color Scheme - blues & greys
-background-color: #938E94;
-background-color: #5D5C61;
-background-color: #7395ae;
-background-color: #557A95;
-background-color: #b1A296; 
+background-color: #938E94; light grey
+background-color: #5D5C61; dark grey
+background-color: #7395ae; light slate blue
+background-color: #557A95; dark slate blue
+background-color: #b1A296; beige
+background-color: #25274d; navy blue
 */
