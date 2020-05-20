@@ -1,5 +1,5 @@
 body {
-  background-image: url("assets/grey-background2.jpg");
+  background-image: url("assets/grey-background.jpg");
 }
 
 h1 {
@@ -37,10 +37,16 @@ h1 {
   font-family: "Abel", sans-serif;
 }
 
+.menu-text {
+  font-size: x-large;
+  color: #25274d !important;
+}
+
 .translucent-form-overlay {
   background-color: rgba(54, 54, 54, 0.8);
   color: #fefefe;
   box-shadow: 10px 10px 5px grey;
+  width: 50%;
 }
 
 .translucent-form-overlay h3,

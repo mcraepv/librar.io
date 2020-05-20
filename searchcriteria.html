@@ -42,9 +42,9 @@
     <form>
       <div class="grid-container">
         <div
-          class="translucent-form-overlay rounded boxshadow grid-x grid-margin-x align-center"
+          class="translucent-form-overlay rounded grid-x grid-margin-x align-center"
         >
-          <h3>Search for Books</h3>
+          <h3 class="text align-left">Search for Books</h3>
           <div class="small-12 cell">
             <label
               >Keyword
@@ -91,13 +91,21 @@
               />
             </label>
           </div>
-
-          <button type="button" class="primary button search-button rounded">
-            Search
-          </button>
-          <button type="button" class="primary button clear-button rounded">
-            Clear
-          </button>
+          <div class="grid-x">
+            <div class="medium-8 cell margin-1">
+              <button
+                type="button"
+                class="primary button search-button rounded padding-10"
+              >
+                Search
+              </button>
+            </div>
+          </div>
+          <div class="medium-2 cell">
+            <button type="button" class="primary button clear-button rounded">
+              Clear
+            </button>
+          </div>
         </div>
       </div>
     </form>
