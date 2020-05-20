@@ -2,6 +2,10 @@ body {
   background-image: url("assets/grey-background2.jpg");
 }
 
+h1 {
+  font-family: "Abel", sans-serif;
+}
+
 .callout {
   background-color: #7395ae;
   color: whitesmoke;
@@ -25,19 +29,24 @@ body {
 }
 
 .button {
-  font-family: "Roboto", sans-serif;
-  background-color: #aaabb8 !important;
-  color: white !important;
+  font-family: "Abel", sans-serif;
+  box-shadow: 10px 10px 5px grey;
+}
+
+.menu {
+  font-family: "Abel", sans-serif;
 }
 
 .translucent-form-overlay {
   background-color: rgba(54, 54, 54, 0.8);
   color: #fefefe;
+  box-shadow: 10px 10px 5px grey;
 }
 
 .translucent-form-overlay h3,
 .translucent-form-overlay label {
   color: #fefefe;
+  font-family: "Abel", sans-serif;
 }
 
 .translucent-form-overlay input,
