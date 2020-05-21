@@ -39,13 +39,13 @@ h2 {
 .button {
   font-family: "Abel", sans-serif;
   box-shadow: 10px 10px 5px grey;
-  background-color: #25274d !important;
 }
 
 .card-btn {
   margin-bottom: 0 !important;
   margin-right: 1rem;
   margin-left: 1rem;
+  background-color: #25274d !important;
 }
 
 .menu {
@@ -93,12 +93,6 @@ h2 {
 #searchBtn,
 #clearBtn {
   background-color: #25274d !important;
-}
-
-#getStarted {
-  margin: 0 auto;
-  display: block;
-  opacity: 0.8;
 }
 
 /* Color Scheme - blues & greys
