@@ -24,6 +24,13 @@ h2 {
   text-align: center;
 }
 
+#page-image {
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+  width: 50%;
+}
+
 /*Search Page*/
 .boxShadow {
   box-shadow: 10px 10px 5px grey;
@@ -89,6 +96,8 @@ h2 {
 }
 
 #getStarted {
+  margin: 0 auto;
+  display: block;
   opacity: 0.8;
 }
 
