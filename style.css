@@ -58,7 +58,6 @@ h2 {
   background-color: rgba(54, 54, 54, 0.8);
   color: #fefefe;
   box-shadow: 10px 10px 5px grey;
-
 }
 
 .translucent-form-overlay h3,
@@ -87,6 +86,10 @@ h2 {
 #searchBtn,
 #clearBtn {
   background-color: #25274d !important;
+}
+
+#getStarted {
+  opacity: 0.8;
 }
 
 /* Color Scheme - blues & greys
