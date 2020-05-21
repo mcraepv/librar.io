@@ -17,7 +17,33 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div class="grid-container">
+     <!-- Start Top Bar -->
+    <div class="top-bar">
+      <div class="top-bar-left">
+        <ul class="menu">
+          <li class="menu-text">Librar.io</li>
+        </ul>
+      </div>
+      <div class="top-bar-right">
+        <ul class="menu">
+          <li><a href="searchcriteria.html">Search Librar.io</a></li>
+          <li><a href="index.html">Book Journal</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <a id="sign-in"><strong>Sign In</strong></a>
+        </ul>
+      </div>
+    </div>
+    <!-- End Top Bar -->
+
+    <div class="callout"></div>
+    <div class="grid-container-fluid">
+      <div class ="grid-x">
+        <div>
+          <img src="assets/book-shelf.jpg" id="page-image" alt="black & white picture of books on a shelf" />
+        </div>
+      </div>
+      
       <div class="grid-x grid-padding-x">
         <div class="large cell">
           <p class="welcome">
@@ -37,11 +63,11 @@
         <p class="welcome"><span style="color: #25274d; font-weight: bold;"> Librar.io.</span> Books for everyone.</p>
       </div>
       <div class="grid-x grid-padding">
-        <div class="small-12 cell">
+        <div class="small-12 cell text-center">
           <a
             href="searchcriteria.html"
             button
-            class="hollow button large secondary rounded"
+            class="hollow button large secondary rounded " id="getStarted"
           >
           Get Started
           </a>

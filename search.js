@@ -37,3 +37,8 @@ $(document).ready(function () {
     });
   }
 });
+
+// function clear () {
+// $("#book-results").empty(); }
+
+// $("#clear").on("click",clear);
