@@ -42,13 +42,16 @@ h1 {
   color: #25274d !important;
 }
 
+.grid-container {
+  width: 50vw;
+}
+
 .translucent-form-overlay {
   background-color: rgba(54, 54, 54, 0.8);
   color: #fefefe;
   box-shadow: 10px 10px 5px grey;
-  width: 50%;
-  margin-left: 25%;
-  margin-top: 5%;
+  /*margin-left: 25%;
+  margin-top: 5%;*/
 }
 
 .translucent-form-overlay h3,
