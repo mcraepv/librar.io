@@ -66,10 +66,10 @@ $(document).ready(function () {
     }
   }
   signInCheck();
+  //new journal btn click listener
   $(document).on("click", "#journalBtn", newBook);
-  //need to add function that loads saved books and entries
   function newBook(event) {
-    $(".grid-container").empty();
+    newJournalBtnRow.remove();
     var newBookRow = $("<div>").addClass("grid-x grid-margin-x align-center");
     var newBookCell = $("<div>").addClass("medium-6 cell text-center");
     var newBookCard = $("<div>").addClass("card boxShadow rounded");
@@ -79,42 +79,25 @@ $(document).ready(function () {
     bookTitleInput.attr("placeholder", "Book Title");
     cardDivider.append(bookTitleInput);
     var cardSection = $("<div>").addClass("card-section");
-    var newBookBtn = $("<button>").addClass("button large text-center rounded");
+    var newBookBtn = $("<a>").addClass(
+      "button large text-center rounded card-btn"
+    );
     newBookBtn.text("Create New Book!");
-    newBookBtn.on("click", function (event) {
-      var bookTitle = bookTitleInput.val();
-      if (bookTitle === null) {
-        return;
-      }
-      db.collection("users")
-        .doc(name)
-        .collection("journals")
-        .doc(bookTitle)
-        .set({
-          title: bookTitle,
-        });
-
-      db.collection(`users/${name}/journals`)
-        .get()
-        .then((snapshot) => {
-          snapshot.docs.forEach((doc) => {
-            console.log(doc.data());
-          });
-        });
-      buildJournals();
-    });
-    cardSection.append(newBookBtn);
+    newBookBtn.attr("id", "newBookBtn");
+    var cancelBtn = $("<a>").text("Cancel");
+    cancelBtn.addClass("button large text-center rounded boxShadow card-btn");
+    cancelBtn.attr("id", "cancelBookBtn");
+    cardSection.append(newBookBtn, cancelBtn);
     newBookCard.append(cardDivider, cardSection);
     newBookCell.append(newBookCard);
     newBookRow.append(newBookCell);
     $("#journalContent").append(newBookRow);
   }
-
+  var newJournalBtnRow;
   function buildJournals() {
+    console.log("build journals called");
     $("#journalContent").empty();
-    var newJournalBtnRow = $("<div>").addClass(
-      "grid-x grid-margin-x align-center"
-    );
+    newJournalBtnRow = $("<div>").addClass("grid-x grid-margin-x align-center");
     var newJournalBtnCell = $("<div>").addClass("cell small-4 text-center");
     var newJournalBtn = $("<a>").text("New Book Journal");
     newJournalBtn.addClass("button large text-center rounded boxShadow");
@@ -133,8 +116,8 @@ $(document).ready(function () {
           var bookCard = $("<div>").addClass("card boxShadow rounded");
           bookCard.attr("id", "journalCard");
           var cardDivider = $("<div>").addClass("card-divider");
-          var title = $("<p>").text(doc.data().title);
-          cardDivider.append(title);
+          var journalTitle = $("<p>").text(doc.data().title);
+          cardDivider.append(journalTitle);
           bookCard.append(cardDivider);
           bookCell.append(bookCard);
           bookRow.append(bookCell);
@@ -142,105 +125,124 @@ $(document).ready(function () {
         });
       });
   }
-  // function rebuildJournals() {
-  //   $("#journalContent").empty();
-  //   db.collection(`users/${name}/journals`)
-  //     .get()
-  //     .then((snapshot) => {
-  //       snapshot.docs.forEach((doc) => {
+  //create new book button click listener
+  $(document).on("click", "#newBookBtn", function (event) {
+    var bookTitle = bookTitleInput.val();
+    if (bookTitle === null) {
+      return;
+    }
+    db.collection("users").doc(name).collection("journals").doc(bookTitle).set({
+      title: bookTitle,
+    });
 
-  // }
-  //journals click listener
-  $(document).on("click", "#journalCard", function (event) {
-    var title = $(this).find("p").text();
-    var entriesRef = db.collection(`users/${name}/journals/${title}/entries`);
-    var newEntryBtnRow;
-    function buildEntries() {
-      $("#journalContent").empty();
-      newEntryBtnRow = $("<div>").addClass(
-        "grid-x grid-padding-x align-center"
-      );
-      var newEntryBtnCell = $("<div>").addClass("cell small-4 text-right");
-      var newEntryBtn = $("<a>").text("New Entry");
-      newEntryBtn.addClass("button large text-center rounded boxShadow");
-      newEntryBtn.attr("id", "entryBtn");
-      var backBtnCell = $("<div>").addClass("cell small-4 text-left");
-      var backBtn = $("<a>").text("Back");
-      backBtn.addClass("button large text-center rounded boxShadow");
-      backBtn.attr("id", "backBtn");
-      backBtnCell.append(backBtn);
-      newEntryBtnCell.append(newEntryBtn);
-      newEntryBtnRow.append(newEntryBtnCell, backBtnCell);
-      $("#journalContent").append(newEntryBtnRow);
-      entriesRef.get().then((snapshot) => {
+    db.collection(`users/${name}/journals`)
+      .get()
+      .then((snapshot) => {
         snapshot.docs.forEach((doc) => {
-          console.log(doc.data().entryText);
-          var entryRow = $("<div>").addClass(
-            "grid-x grid-margin-x align-center"
-          );
-          var entryCell = $("<div>").addClass("medium-6 cell");
-          var entryCard = $("<div>").addClass("card boxShadow rounded");
-          var cardDivider = $("<div>").addClass("card-divider");
-          var entryTitle = $("<p>").text(doc.data().entryTitle);
-          var cardSection = $("<div>").addClass("card-section");
-          var entryText = $("<p>").text(doc.data().entryText);
-          cardDivider.append(entryTitle);
-          cardSection.append(entryText);
-          entryCard.append(cardDivider, cardSection);
-          entryCell.append(entryCard);
-          entryRow.append(entryCell);
-          $("#journalContent").prepend(entryRow);
+          console.log(doc.data());
         });
       });
-    }
+    buildJournals();
+  });
+  // cancelBtn click listener
+  $(document).on("click", "#cancelBookBtn", function () {
+    buildJournals();
+  });
+  var newEntryBtnRow;
+  var entriesRef;
+  var title;
+  //journals click listener
+  $(document).on("click", "#journalCard", function (event) {
+    title = $(this).find("p").text();
+    entriesRef = db.collection(`users/${name}/journals/${title}/entries`);
     buildEntries();
-    //back click listener
-    $(document).on("click", "#backBtn", function () {
-      buildJournals();
+  });
+  //back click listener
+  $(document).on("click", "#backBtn", function () {
+    buildJournals();
+  });
+  //new entry click listener
+  $(document).on("click", "#entryBtn", function () {
+    newEntryBtnRow.remove();
+    var entryRow = $("<div>").addClass("grid-x grid-margin-x align-center");
+    var entryCell = $("<div>").addClass("medium-6 cell");
+    var entryCard = $("<div>").addClass("card rounded boxShadow");
+    var cardDivider = $("<div>").addClass("card-divider");
+    var titleInput = $("<input>").attr("type", "text");
+    titleInput.addClass("rounded");
+    titleInput.attr("placeholder", "Entry Title");
+    cardDivider.append(titleInput);
+    var cardSection = $("<div>").addClass("card-section text-center");
+    var textArea = $("<textarea>").attr("placeholder", "New Entry!");
+    textArea.css({
+      resize: "none",
+      height: "250px",
     });
-    //new entry click listener
-    $(document).on("click", "#entryBtn", function () {
-      newEntryBtnRow.remove();
-      var entryRow = $("<div>").addClass("grid-x grid-margin-x align-center");
-      var entryCell = $("<div>").addClass("medium-6 cell");
-      var entryCard = $("<div>").addClass("card rounded boxShadow");
-      var cardDivider = $("<div>").addClass("card-divider");
-      var titleInput = $("<input>").attr("type", "text");
-      titleInput.addClass("rounded");
-      titleInput.attr("placeholder", "Entry Title");
-      cardDivider.append(titleInput);
-      var cardSection = $("<div>").addClass("card-section text-center");
-      var textArea = $("<textarea>").attr("placeholder", "New Entry!");
-      textArea.css({ resize: "none", height: "250px" });
-      textArea.addClass("rounded");
-      var saveBtn = $("<button>").addClass("button large text-center rounded");
-      saveBtn.attr("id", "saveEntry");
-      saveBtn.text("Save");
-      var cancelBtn = $("<a>").text("Cancel");
-      cancelBtn.addClass("button large text-center rounded");
-      cancelBtn.attr("id", "cancelBtn");
-      cardSection.append(textArea, saveBtn, cancelBtn);
-      entryCard.append(cardDivider, cardSection);
-      entryCell.append(entryCard);
-      entryRow.append(entryCell);
-      $("#journalContent").append(entryRow);
-      //save entry click listener
-      $(document).on("click", "#saveEntry", function () {
-        if (textArea.val() !== "") {
-          entriesRef.doc(titleInput.val()).set({
-            entryTitle: titleInput.val(),
-            entryText: textArea.val(),
-          });
-          entryRow.remove();
-          buildEntries();
-          $("#journalContent").append(newEntryBtnRow);
-        }
-      });
-      //cancel click listener
-      $(document).on("click", "#cancelBtn", function () {
+    textArea.addClass("rounded");
+    var saveBtn = $("<button>").addClass(
+      "button large text-center rounded card-btn"
+    );
+    saveBtn.attr("id", "saveEntry");
+    saveBtn.text("Save");
+    var cancelBtn = $("<a>").text("Cancel");
+    cancelBtn.addClass("button large text-center rounded card-btn");
+    cancelBtn.attr("id", "cancelBtn");
+    cardSection.append(textArea, saveBtn, cancelBtn);
+    entryCard.append(cardDivider, cardSection);
+    entryCell.append(entryCard);
+    entryRow.append(entryCell);
+    $("#journalContent").append(entryRow);
+    //save entry click listener
+    $(document).on("click", "#saveEntry", function () {
+      if (textArea.val() !== "") {
+        entriesRef.doc(titleInput.val()).set({
+          entryTitle: titleInput.val(),
+          entryText: textArea.val(),
+        });
         entryRow.remove();
+        buildEntries();
         $("#journalContent").append(newEntryBtnRow);
-      });
+      }
+    });
+    //cancel click listener
+    $(document).on("click", "#cancelBtn", function () {
+      entryRow.remove();
+      $("#journalContent").append(newEntryBtnRow);
     });
   });
+  //builds journal entries
+  function buildEntries() {
+    $("#journalContent").empty();
+    newEntryBtnRow = $("<div>").addClass("grid-x grid-padding-x align-center");
+    var newEntryBtnCell = $("<div>").addClass("cell small-4 text-right");
+    var newEntryBtn = $("<a>").text("New Entry");
+    newEntryBtn.addClass("button large text-center rounded boxShadow");
+    newEntryBtn.attr("id", "entryBtn");
+    var backBtnCell = $("<div>").addClass("cell small-4 text-left");
+    var backBtn = $("<a>").text("Back");
+    backBtn.addClass("button large text-center rounded boxShadow");
+    backBtn.attr("id", "backBtn");
+    backBtnCell.append(backBtn);
+    newEntryBtnCell.append(newEntryBtn);
+    newEntryBtnRow.append(newEntryBtnCell, backBtnCell);
+    $("#journalContent").append(newEntryBtnRow);
+    entriesRef.get().then((snapshot) => {
+      snapshot.docs.forEach((doc) => {
+        console.log(doc.data().entryText);
+        var entryRow = $("<div>").addClass("grid-x grid-margin-x align-center");
+        var entryCell = $("<div>").addClass("medium-6 cell");
+        var entryCard = $("<div>").addClass("card boxShadow rounded");
+        var cardDivider = $("<div>").addClass("card-divider");
+        var entryTitle = $("<p>").text(doc.data().entryTitle);
+        var cardSection = $("<div>").addClass("card-section");
+        var entryText = $("<p>").text(doc.data().entryText);
+        cardDivider.append(entryTitle);
+        cardSection.append(entryText);
+        entryCard.append(cardDivider, cardSection);
+        entryCell.append(entryCard);
+        entryRow.append(entryCell);
+        $("#journalContent").prepend(entryRow);
+      });
+    });
+  }
 });

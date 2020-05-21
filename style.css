@@ -32,6 +32,13 @@ h2 {
 .button {
   font-family: "Abel", sans-serif;
   box-shadow: 10px 10px 5px grey;
+  background-color: #25274d !important;
+}
+
+.card-btn {
+  margin-bottom: 0 !important;
+  margin-right: 1rem;
+  margin-left: 1rem;
 }
 
 .menu {
@@ -51,8 +58,7 @@ h2 {
   background-color: rgba(54, 54, 54, 0.8);
   color: #fefefe;
   box-shadow: 10px 10px 5px grey;
-  /*margin-left: 25%;
-  margin-top: 5%;*/
+
 }
 
 .translucent-form-overlay h3,
