@@ -2,7 +2,8 @@ body {
   background-image: url("assets/grey-background.jpg");
 }
 
-h1 {
+h1,
+h2 {
   font-family: "Abel", sans-serif;
 }
 
