@@ -13,9 +13,8 @@ $(document).ready(function () {
   firebase.initializeApp(firebaseConfig);
   const db = firebase.firestore();
   var user;
-  var name;
+  var name = "";
   $("#sign-in").on("click", function (event) {
-    console.log("Click");
     var provider = new firebase.auth.GoogleAuthProvider();
     firebase
       .auth()
@@ -25,7 +24,7 @@ $(document).ready(function () {
         var token = result.credential.accessToken;
         // The signed-in user info.
         user = result.user;
-        console.log(user);
+        console.log(user, "user console");
         name = user.displayName;
         console.log(name);
         signInCheck();

@@ -36,7 +36,6 @@
     </div>
     <!-- End Top Bar -->
 
-    <!-- Search Form-->
     <div class="callout"></div>
     <div id="searchContent">
       <form>
@@ -44,7 +43,9 @@
           <div
             class="translucent-form-overlay rounded grid-x grid-margin-x align-center"
           >
-            <h3>Search for Books</h3>
+            <div class="small-12 cell text-center">
+              <h3>Search for Books</h3>
+            </div>
             <div class="small-12 cell">
               <label
                 >Keyword
@@ -96,33 +97,29 @@
                 </select>
               </label>
             </div>
-
-            <div class="grid-x">
-              <div class="medium-8 cell margin-1">
+              <div class="small-6 cell margin-1 text-right">
                 <button
                   type="button"
-                  class="primary button search-button rounded padding-10"
+                  class="primary button rounded"
                   id="searchBtn"
                 >
                   Search
                 </button>
               </div>
-            </div>
-            <div class="medium-2 cell">
-              <button
-                type="button"
-                class="primary button clear-button rounded"
-                id="clearBtn"
-              >
-                Clear
-              </button>
+              <div class="small-6 cell">
+                <button
+                  type="button"
+                  class="primary button rounded"
+                  id="clearBtn"
+                >
+                  Clear
+                </button>
+              </div>
             </div>
           </div>
         </div>
       </form>
     </div>
-    <!-- End of Form -->
-
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script
       src="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/js/foundation.min.js"

@@ -14,7 +14,6 @@ $(document).ready(function () {
     const author = `+inauthor:${authorVal}`;
     const title = `+intitle:${titleVal}`;
     const genre = `+subject:${genreVal}`;
-    console.log(search);
     if (keywordVal !== "") {
       search += keyword;
     }
@@ -34,8 +33,29 @@ $(document).ready(function () {
       method: "GET",
     }).then(function (data) {
       console.log(data);
+      $("#searchContent").empty();
+      const books = data.items;
+      const resultsContainer = $("<div>").addClass("grid-container");
+      $("#searchContent").append(resultsContainer);
+      for (var i = 0; i < books.length; i++) {
+        var book = books[i];
+        var bookInfo = book.volumeInfo;
+        var titleRow = $("<div>").addClass("grid-x grid-margin-x align-center");
+        var titleCell = $("<div>").addClass("small-12 cell text-center");
+        var bookTitle = $("<h3>").text(bookInfo.title);
+        titleCell.append(bookTitle);
+        titleRow.append(titleCell);
+        resultsContainer.append(titleRow);
+      }
     });
   }
+});
+
+$(document).on("click", "#clearBtn", function () {
+  $("#keyword").val("");
+  $("#author").val("");
+  $("#title").val("");
+  $("#genre").val("fiction");
 });
 
 // function clear () {
