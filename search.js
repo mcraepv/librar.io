@@ -14,7 +14,6 @@ $(document).ready(function () {
     const author = `+inauthor:${authorVal}`;
     const title = `+intitle:${titleVal}`;
     const genre = `+subject:${genreVal}`;
-    console.log(search);
     if (keywordVal !== "") {
       search += keyword;
     }
@@ -34,8 +33,34 @@ $(document).ready(function () {
       method: "GET",
     }).then(function (data) {
       console.log(data);
+      $("#searchContent").empty();
+      const books = data.items;
+      const resultsContainer = $("<div>").addClass("grid-container");
+      $("#searchContent").append(resultsContainer);
+      for (var i = 0; i < books.length; i++) {
+        var book = books[i];
+        var bookInfo = book.volumeInfo;
+        var bookRow = $("<div>").addClass("grid-x grid-margin-x align-center");
+        var bookCell = $("<div>").addClass("medium-6 cell");
+        var bookCard = $("<div>").addClass("card boxShadow rounded");
+        var cardDivider = $("<div>").addClass("card-divider");
+        var bookTitle = $("<h4>").text(bookInfo.title);
+        var cardSection = $("<div>").addClass("card-section text-center");
+        cardDivider.append(bookTitle);
+        bookCard.append(cardDivider);
+        bookCell.append(bookCard);
+        bookRow.append(bookCell);
+        resultsContainer.append(bookRow);
+      }
     });
   }
+});
+
+$(document).on("click", "#clearBtn", function () {
+  $("#keyword").val("");
+  $("#author").val("");
+  $("#title").val("");
+  $("#genre").val("fiction");
 });
 
 // function clear () {
