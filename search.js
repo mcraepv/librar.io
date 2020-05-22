@@ -40,12 +40,17 @@ $(document).ready(function () {
       for (var i = 0; i < books.length; i++) {
         var book = books[i];
         var bookInfo = book.volumeInfo;
-        var titleRow = $("<div>").addClass("grid-x grid-margin-x align-center");
-        var titleCell = $("<div>").addClass("small-12 cell text-center");
-        var bookTitle = $("<h3>").text(bookInfo.title);
-        titleCell.append(bookTitle);
-        titleRow.append(titleCell);
-        resultsContainer.append(titleRow);
+        var bookRow = $("<div>").addClass("grid-x grid-margin-x align-center");
+        var bookCell = $("<div>").addClass("medium-6 cell");
+        var bookCard = $("<div>").addClass("card boxShadow rounded");
+        var cardDivider = $("<div>").addClass("card-divider");
+        var bookTitle = $("<h4>").text(bookInfo.title);
+        var cardSection = $("<div>").addClass("card-section text-center");
+        cardDivider.append(bookTitle);
+        bookCard.append(cardDivider);
+        bookCell.append(bookCard);
+        bookRow.append(bookCell);
+        resultsContainer.append(bookRow);
       }
     });
   }
