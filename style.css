@@ -8,7 +8,7 @@ h2 {
 }
 
 .callout {
-  background-color: #25274d;
+  background-color: #022140;
   color: whitesmoke;
 }
 
@@ -48,12 +48,12 @@ h2 {
   box-shadow: 10px 10px 5px grey;
 }
 
-/*.card-btn {
+.card-btn {
   margin-bottom: 0 !important;
   margin-right: 1rem;
   margin-left: 1rem;
   background-color: #25274d !important;
-} */
+}
 
 .menu {
   font-family: "Abel", sans-serif;
@@ -61,7 +61,6 @@ h2 {
 
 .menu-text {
   font-size: x-large;
-  color: #25274d !important;
 }
 
 .grid-container {
@@ -108,5 +107,6 @@ background-color: #5D5C61; dark grey
 background-color: #7395ae; light slate blue
 background-color: #557A95; dark slate blue
 background-color: #b1A296; beige
-background-color: #25274d; navy blue
+background-color: #25274d; navy purple blue
+ackground-color: #022140; real navy blue
 */
