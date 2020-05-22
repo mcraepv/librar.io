@@ -19,6 +19,13 @@ h2 {
 /* Enter Page*/
 
 .welcome {
+  font-family: "Homemade Apple", cursive;
+  font-size: 40px;
+  text-align: center;
+  margin-top: 40px;
+}
+
+.motto {
   font-family: "Abel", sans-serif;
   font-size: 40px;
   text-align: center;
@@ -41,12 +48,12 @@ h2 {
   box-shadow: 10px 10px 5px grey;
 }
 
-.card-btn {
+/*.card-btn {
   margin-bottom: 0 !important;
   margin-right: 1rem;
   margin-left: 1rem;
   background-color: #25274d !important;
-}
+} */
 
 .menu {
   font-family: "Abel", sans-serif;
