@@ -1,6 +1,12 @@
 // https://www.googleapis.com/books/v1/volumes?q=flowers+inauthor:keyes&key=yourAPIKey
 $(document).ready(function () {
   $(document).on("click", "#searchBtn", searchFn);
+  $(document).keydown(function (e) {
+    if (e.keyCode === 13) {
+      console.log("Enter");
+      searchFn();
+    }
+  });
   function searchFn() {
     const apiKey = "AIzaSyDDr4fmK6B3-3yS-S2X2d6X29EXQ6p8Sq0";
 
