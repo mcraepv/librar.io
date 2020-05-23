@@ -32,18 +32,6 @@ h2 {
   text-align: center;
 }
 
-#main-image {
-  display: block;
-  margin-right: auto;
-  margin-left: auto;
-  width: 50%;
-}
-
-#border-image {
-  width: max-content;
-  height: 20vh;
-}
-
 /*Search Page*/
 .boxShadow {
   box-shadow: 10px 10px 5px grey;
@@ -107,6 +95,22 @@ h2 {
 #searchBtn,
 #clearBtn {
   background-color: #022140 !important;
+}
+
+#main-image {
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+  width: 50%;
+}
+
+#border-image {
+  width: max-content;
+  height: 20vh;
+}
+
+#aboutCard {
+  margin-top: 3rem;
 }
 
 #searchReset {
