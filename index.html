@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Librar.io</title>
+    <link rel="icon" href="assets/book-icon.jpg" type="image/x-icon" />
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/css/foundation.min.css"
@@ -11,7 +12,7 @@
       crossorigin="anonymous"
     />
     <link
-      href="https://fonts.googleapis.com/css2?family=Abel&family=Cedarville+Cursive&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Abel&family=Homemade+Apple&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="style.css" />
@@ -21,7 +22,9 @@
     <div class="top-bar">
       <div class="top-bar-left">
         <ul class="menu">
-          <li class="menu-text">Librar.io</li>
+          <li class="menu-text">
+            <a href="welcome.html" style="color: #25274d;">Librar.io </a>
+          </li>
         </ul>
       </div>
       <div class="top-bar-right">
@@ -35,9 +38,17 @@
       </div>
     </div>
     <!-- End Top Bar -->
-    <div class="callout">
-      <h1 class="text-center" id="header">My Book Journal</h1>
+    <div class="callout small" style="background: #4d6d9a;"></div>
+    <div class="grid x grid-margin-x">
+      <div class="large-12 cell center-align">
+        <div class="card" style="margin-bottom: 0rem;">
+          <div class="card-image">
+            <img src="assets/book-shelf.jpg" id="border-image" />
+          </div>
+        </div>
+      </div>
     </div>
+    <div class="callout"></div>
     <div class="grid-container" id="journalContent"></div>
 
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>

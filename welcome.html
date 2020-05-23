@@ -4,16 +4,16 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Librar.io</title>
+    <link rel = "icon" href =  
+"assets/book-icon.jpg" 
+        type = "image/x-icon"> 
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/css/foundation.min.css"
       integrity="sha256-ogmFxjqiTMnZhxCqVmcqTvjfe1Y/ec4WaRj/aQPvn+I="
       crossorigin="anonymous"
     />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Abel&family=Cedarville+Cursive&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Abel&family=Homemade+Apple&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
@@ -21,7 +21,7 @@
     <div class="top-bar">
       <div class="top-bar-left">
         <ul class="menu">
-          <li class="menu-text">Librar.io</li>
+          <li class="menu-text"> <a href ="welcome.html" style="color: #25274d;">Librar.io </a></li>
         </ul>
       </div>
       <div class="top-bar-right">
@@ -36,11 +36,12 @@
     </div>
     <!-- End Top Bar -->
 
-    <div class="callout"></div>
+    <div class = "callout small" style="background: #4D6D9A;"></div>
+    <div class = "callout"></div>
     <div class="grid-container-fluid">
       <div class ="grid-x">
         <div>
-          <img src="assets/book-shelf.jpg" id="page-image" alt="black & white picture of books on a shelf" />
+          <img src="assets/book-shelf.jpg" id="main-image" alt="black & white picture of books on a shelf" />
         </div>
       </div>
       
@@ -60,14 +61,14 @@
       </div>
       <div class="grid-x grid-margin-x">
         <div class = "medium cell">
-        <p class="welcome"><span style="color: #25274d; font-weight: bold;"> Librar.io.</span> Books for everyone.</p>
+        <p class="motto"><span style="color: #25274d; font-weight: bold;"> Librar.io.</span> Books for everyone.</p>
       </div>
-      <div class="grid-x grid-padding">
-        <div class="small-12 cell text-center">
+      <div class="grid-x grid-margin-x">
+        <div class="small-12 cell centered">
           <a
             href="searchcriteria.html"
             button
-            class="hollow button large secondary rounded " id="getStarted"
+            class="hollow button large secondary rounded align-center" id="getStarted"
           >
           Get Started
           </a>

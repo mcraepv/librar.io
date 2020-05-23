@@ -8,8 +8,9 @@ h2 {
 }
 
 .callout {
-  background-color: #25274d;
+  background-color: #022140;
   color: whitesmoke;
+  margin: 0rem;
 }
 
 .rounded {
@@ -19,16 +20,28 @@ h2 {
 /* Enter Page*/
 
 .welcome {
+  font-family: "Homemade Apple", cursive;
+  font-size: 40px;
+  text-align: center;
+  margin-top: 40px;
+}
+
+.motto {
   font-family: "Abel", sans-serif;
   font-size: 40px;
   text-align: center;
 }
 
-#page-image {
+#main-image {
   display: block;
   margin-right: auto;
   margin-left: auto;
   width: 50%;
+}
+
+#border-image {
+  width: max-content;
+  height: 20vh;
 }
 
 /*Search Page*/
@@ -54,7 +67,6 @@ h2 {
 
 .menu-text {
   font-size: x-large;
-  color: #25274d !important;
 }
 
 .grid-container {
@@ -65,6 +77,7 @@ h2 {
   background-color: rgba(54, 54, 54, 0.8);
   color: #fefefe;
   box-shadow: 10px 10px 5px grey;
+  margin-top: 2rem;
 }
 
 .translucent-form-overlay h3,
@@ -101,5 +114,6 @@ background-color: #5D5C61; dark grey
 background-color: #7395ae; light slate blue
 background-color: #557A95; dark slate blue
 background-color: #b1A296; beige
-background-color: #25274d; navy blue
+background-color: #25274d; navy purple blue
+ackground-color: #022140; real navy blue
 */
