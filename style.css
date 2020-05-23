@@ -52,6 +52,7 @@ h2 {
 .button {
   font-family: "Abel", sans-serif;
   box-shadow: 10px 10px 5px grey;
+  background-color: #022140 !important;
 }
 
 .card-btn {
@@ -105,9 +106,13 @@ h2 {
 
 #searchBtn,
 #clearBtn {
-  background-color: #25274d !important;
+  background-color: #022140 !important;
 }
 
+#searchReset {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
 /* Color Scheme - blues & greys
 background-color: #938E94; light grey
 background-color: #5D5C61; dark grey

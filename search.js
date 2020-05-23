@@ -7,6 +7,7 @@ $(document).ready(function () {
       searchFn();
     }
   });
+
   function searchFn() {
     const apiKey = "AIzaSyDDr4fmK6B3-3yS-S2X2d6X29EXQ6p8Sq0";
 
@@ -37,10 +38,27 @@ $(document).ready(function () {
       method: "GET",
     }).then(function (data) {
       console.log(data);
+      $(document).data("initialSearch", $("#searchContent").clone(true));
       $("#searchContent").empty();
       const books = data.items;
       const resultsContainer = $("<div>").addClass("grid-container");
+      var resetBtn = $("<a>").addClass(
+        "button large text-center rounded boxShadow"
+      );
+      resetBtn.attr("id", "searchReset");
+      resetBtn.text("Reset Search");
+      var resetBtnCell = $("<div>").addClass("medium-12 cell text-center");
+      var resetBtnRow = $("<div>").addClass(
+        "grid-x grid-margin-x align-center"
+      );
+      resetBtnCell.append(resetBtn);
+      resetBtnRow.append(resetBtnCell);
+      resultsContainer.append(resetBtnRow);
       $("#searchContent").append(resultsContainer);
+      $("#searchReset").on("click", function () {
+        console.log("click");
+        $(document).data("initialSearch").replaceAll("#searchContent");
+      });
       for (var i = 0; i < books.length; i++) {
         var book = books[i];
         var bookInfo = book.volumeInfo;
