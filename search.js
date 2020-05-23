@@ -26,9 +26,7 @@ $(document).ready(function () {
     if (genreVal !== undefined) {
       search += genre;
     }
-    console.log(search);
     const url = `https://www.googleapis.com/books/v1/volumes?q=${search}&printType=books&key=${apiKey}`;
-    console.log(url);
     $.ajax(url, {
       method: "GET",
     }).then(function (data) {
@@ -62,7 +60,11 @@ $(document).ready(function () {
         img.addClass("right");
         imgHyper.attr("target", "_blank");
         imgHyper.append(img);
-        var snippet = $("<p>").text(book.searchInfo.textSnippet);
+        if (book.searchInfo === undefined) {
+          var snippet = $("<p>").text("No summary available.");
+        } else {
+          var snippet = $("<p>").text(book.searchInfo.textSnippet);
+        }
         var authorsText = "By ";
         var authors = bookInfo.authors;
         if (authors.length === 1) {
