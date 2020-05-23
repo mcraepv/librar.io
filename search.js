@@ -66,11 +66,8 @@ $(document).ready(function () {
         img.addClass("right");
         imgHyper.attr("target", "_blank");
         imgHyper.append(img);
-        if (book.searchInfo === undefined) {
-          var snippet = $("<p>").text("No summary available.");
-        } else {
-          var snippet = $("<p>").text(book.searchInfo.textSnippet);
-        }
+        var snippet = $("<p>").text(bookInfo.description);
+
         var authorsText = "By ";
         var authors = bookInfo.authors;
         if (authors.length === 1) {
