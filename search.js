@@ -26,9 +26,7 @@ $(document).ready(function () {
     if (genreVal !== undefined) {
       search += genre;
     }
-    console.log(search);
     const url = `https://www.googleapis.com/books/v1/volumes?q=${search}&printType=books&key=${apiKey}`;
-    console.log(url);
     $.ajax(url, {
       method: "GET",
     }).then(function (data) {
@@ -46,8 +44,42 @@ $(document).ready(function () {
         var cardDivider = $("<div>").addClass("card-divider");
         var bookTitle = $("<h4>").text(bookInfo.title);
         var cardSection = $("<div>").addClass("card-section text-center");
+        var img = $("<img>").attr("src", bookInfo.imageLinks.smallThumbnail);
+        img.attr("alt", `The cover of ${bookInfo.title}`);
+        img.attr("data-tooltip", "");
+        img.attr("tabindex", "1");
+        var imgHyper = $("<a>").attr("href", book.saleInfo.buyLink);
+        if (book.saleInfo.saleability === "NOT_FOR_SALE") {
+          img.attr(
+            "title",
+            "This book is not for sale on the Google Play Store"
+          );
+        } else {
+          img.attr("title", "Click to go to Google Play Store");
+        }
+        img.addClass("right");
+        imgHyper.attr("target", "_blank");
+        imgHyper.append(img);
+        if (book.searchInfo === undefined) {
+          var snippet = $("<p>").text("No summary available.");
+        } else {
+          var snippet = $("<p>").text(book.searchInfo.textSnippet);
+        }
+        var authorsText = "By ";
+        var authors = bookInfo.authors;
+        if (authors.length === 1) {
+          authorsText += authors[0];
+        } else {
+          len = authors.length - 1;
+          for (var i = 0; i < len; i++) {
+            authorsText += `${authors[i]}, `;
+          }
+          authorsText += authors.pop();
+        }
+        var authorsEl = $("<p>").text(authorsText);
+        cardSection.append(imgHyper, snippet, authorsEl);
         cardDivider.append(bookTitle);
-        bookCard.append(cardDivider);
+        bookCard.append(cardDivider, cardSection);
         bookCell.append(bookCard);
         bookRow.append(bookCell);
         resultsContainer.append(bookRow);
