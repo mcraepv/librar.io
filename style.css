@@ -10,6 +10,7 @@ h2 {
 .callout {
   background-color: #022140;
   color: whitesmoke;
+  margin: 0rem;
 }
 
 .rounded {
@@ -31,11 +32,16 @@ h2 {
   text-align: center;
 }
 
-#page-image {
+#main-image {
   display: block;
   margin-right: auto;
   margin-left: auto;
   width: 50%;
+}
+
+#border-image {
+  width: max-content;
+  height: 20vh;
 }
 
 /*Search Page*/
@@ -71,6 +77,7 @@ h2 {
   background-color: rgba(54, 54, 54, 0.8);
   color: #fefefe;
   box-shadow: 10px 10px 5px grey;
+  margin-top: 3rem;
 }
 
 .translucent-form-overlay h3,
