@@ -66,7 +66,11 @@ $(document).ready(function () {
         img.addClass("right");
         imgHyper.attr("target", "_blank");
         imgHyper.append(img);
-        var snippet = $("<p>").text(bookInfo.description);
+        var snippetText = bookInfo.description;
+        if (snippetText.length > 250) {
+          snippetText = snippetText.slice(0, 250);
+        }
+        var snippet = $("<p>").text(`${snippetText}...`);
 
         var authorsText = "By ";
         var authors = bookInfo.authors;
