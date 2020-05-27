@@ -120,7 +120,3 @@ $(document).on("click", "#clearBtn", function () {
   $("#genre").val("fiction");
 });
 
-// function clear () {
-// $("#book-results").empty(); }
-
-// $("#clear").on("click",clear);
