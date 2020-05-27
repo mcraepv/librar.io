@@ -119,15 +119,16 @@ h2 {
 }
 
 #footer {
-  height: 150px;
+  height: 100px;
   position: fixed;
   bottom: 0px;
   left: 0px;
-  line-height: 50px;
   background-color: #022140;
   color: whitesmoke;
   font-family: "Abel", sans-serif;
   width: 100%;
+  line-height: 0px;
+  text-align: center;
 }
 
 /* Color Scheme - blues & greys
