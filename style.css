@@ -117,6 +117,20 @@ h2 {
   margin-top: 1rem;
   margin-bottom: 1rem;
 }
+
+#footer {
+  height: 100px;
+  position: fixed;
+  bottom: 0px;
+  left: 0px;
+  background-color: #022140;
+  color: whitesmoke;
+  font-family: "Abel", sans-serif;
+  width: 100%;
+  line-height: 0px;
+  text-align: center;
+}
+
 /* Color Scheme - blues & greys
 background-color: #938E94; light grey
 background-color: #5D5C61; dark grey
