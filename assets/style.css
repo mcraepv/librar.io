@@ -105,7 +105,7 @@ h2 {
 }
 
 #border-image {
-  width: max-content;
+  width: 100%;
   height: 20vh;
 }
 
@@ -119,7 +119,7 @@ h2 {
 }
 
 #footer {
-  height: 100px;
+  height: 5vh;
   position: fixed;
   bottom: 0px;
   left: 0px;
@@ -127,7 +127,6 @@ h2 {
   color: whitesmoke;
   font-family: "Abel", sans-serif;
   width: 100%;
-  line-height: 0px;
   text-align: center;
 }
 
