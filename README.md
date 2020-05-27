@@ -1,8 +1,12 @@
 # Librar.io
 
+## Live Site
+
+https://mcraepv.github.io/librar.io/
+
 ## Description
 
-Librar.io is an app that allows users to search for books to read through dynamic specifications. Users could take a quiz to help them narrow down a search if they don't know where to start, or can enter specific criteria and find a book. Users can then track their progress on the book and keep a reading journal. Users can keep a list of books they want to read, and look through old book journals. Users can also find links to where to buy the books their search queries return.
+Librar.io allows users to create and save book journals of their favorite novels, and search the google books API to find new ones! Users can then keep a reading journal to help them stay motivated. Users can also find links to where to buy the books their search queries return.
 
 ## Installation
 
@@ -10,14 +14,25 @@ Clone our repository to check out the code, or visit the live site above to see 
 
 ## Usage
 
-Try out the different search methods, or add a book you'r ecurrently reading to the journal section.
+Try out the search, or add a book you're currently reading to the journal section.
 
 ## Credits
 
-https://materializecss.com/ - Materialize Framework
-https://jquery.com/ - jQuery
-https://developers.google.com/books - Google Books API
-https://developer.nytimes.com/docs/books-product/1/overview - NYT Books API
+### Foundation
+
+https://get.foundation/
+
+### jQuery
+
+https://jquery.com/
+
+### Google Books API
+
+https://developers.google.com/books
+
+### Firebase
+
+https://firebase.google.com/
 
 ## License
 
@@ -45,10 +60,12 @@ SOFTWARE.
 
 ## Developers
 
-Charles McRae Peavy
+### Charles McRae Peavy
+
 https://www.linkedin.com/in/mcraepv/
 https://github.com/mcraepv
 
-Mariam Ghaffar
+### Mariam Ghaffar
+
 https://www.linkedin.com/in/mariam-ghaffar-22852957/
 https://github.com/mghaffar89
