@@ -42,7 +42,6 @@ $(document).ready(function () {
   function signInCheck() {
     firebase.auth().onAuthStateChanged(function (user) {
       console.log(user);
-      // signInCheck();
       uid = user.uid;
       if (user) {
         db.collection("users").doc(uid).set({
@@ -99,7 +98,6 @@ $(document).ready(function () {
   }
   var newJournalBtnRow;
   function buildJournals() {
-    console.log("build journals called");
     $("#journalContent").empty();
     newJournalBtnRow = $("<div>").addClass("grid-x grid-margin-x align-center");
     var newJournalBtnCell = $("<div>").addClass("cell small-4 text-center");
@@ -221,7 +219,6 @@ $(document).ready(function () {
   });
   //builds journal entries
   function buildEntries() {
-    console.log("build entries called");
     $("#journalContent").empty();
     newEntryBtnRow = $("<div>").addClass("grid-x grid-padding-x align-center");
     var newEntryBtnCell = $("<div>").addClass("cell small-4 text-right");

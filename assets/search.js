@@ -38,7 +38,7 @@ $(document).ready(function () {
         // ...
       });
   });
-
+  var uid = "";
   firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
       // User is signed in.
@@ -48,7 +48,7 @@ $(document).ready(function () {
       var emailVerified = user.emailVerified;
       var photoURL = user.photoURL;
       var isAnonymous = user.isAnonymous;
-      var uid = user.uid;
+      uid = user.uid;
       var providerData = user.providerData;
       // ...
     } else {
@@ -126,6 +126,7 @@ $(document).ready(function () {
         var saveIcon = $("<i>").addClass("fa fa-star");
         saveIcon.attr("id", "saveIcon");
         var cardSection = $("<div>").addClass("card-section text-center");
+        //img grab
         var img = $("<img>").attr("src", bookInfo.imageLinks.smallThumbnail);
         img.attr("alt", `The cover of ${bookInfo.title}`);
         img.attr("data-tooltip", "");
@@ -142,6 +143,7 @@ $(document).ready(function () {
         img.addClass("right");
         imgHyper.attr("target", "_blank");
         imgHyper.append(img);
+        //img grab end
         var snippetText = bookInfo.description;
         if (snippetText.length > 250) {
           snippetText = snippetText.slice(0, 250);
@@ -176,7 +178,18 @@ $(document).ready(function () {
     $("#genre").val("fiction");
   });
   $(document).on("click", "#saveIcon", function () {
-    console.log($(this));
+    console.log("click");
     $(this).attr("id", "savedIcon");
+    var savedBook = $(this).parent().parent().parent().html();
+    console.log(savedBook);
+    var bookTitle = $(this).parent().prev().find("h4").text();
+    console.log(bookTitle);
+    db.collection("users")
+      .doc(uid)
+      .collection("savedBooks")
+      .doc(bookTitle)
+      .set({
+        html: savedBook,
+      });
   });
 });
