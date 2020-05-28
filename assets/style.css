@@ -17,8 +17,6 @@ h2 {
   border-radius: 10px;
 }
 
-/* Enter Page*/
-
 .welcome {
   font-family: "Homemade Apple", cursive;
   font-size: 40px;
@@ -32,7 +30,6 @@ h2 {
   text-align: center;
 }
 
-/*Search Page*/
 .boxShadow {
   box-shadow: 10px 10px 5px grey;
 }
@@ -105,8 +102,11 @@ h2 {
 }
 
 #border-image {
-  width: 100%;
+  width: 100vw;
   height: 20vh;
+  background-image: url("book-shelf.jpg");
+  background-size: cover;
+  background-position-y: 15%;
 }
 
 #aboutCard {
@@ -119,14 +119,14 @@ h2 {
 }
 
 #footer {
-  height: 5vh;
+  height: 6vh;
   position: fixed;
   bottom: 0px;
   left: 0px;
   background-color: #022140;
   color: whitesmoke;
   font-family: "Abel", sans-serif;
-  width: 100%;
+  width: 100vw;
   text-align: center;
 }
 
