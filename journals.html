@@ -15,6 +15,10 @@
       href="https://fonts.googleapis.com/css2?family=Abel&family=Homemade+Apple&display=swap"
       rel="stylesheet"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
     <link rel="stylesheet" href="./assets/style.css" />
   </head>
   <body>
@@ -23,7 +27,7 @@
       <div class="top-bar-left">
         <ul class="menu">
           <li class="menu-text">
-            <a href="welcome.html" style="color: #25274d;">Librar.io </a>
+            <a href="index.html" style="color: #25274d;">Librar.io </a>
           </li>
         </ul>
       </div>
@@ -31,7 +35,6 @@
         <ul class="menu">
           <li><a href="searchcriteria.html">Search Librar.io</a></li>
           <li><a href="journals.html">Book Journal</a></li>
-          <li><a href="saved.html">Saved Books</a></li>
           <li><a href="about.html">About</a></li>
           <a id="sign-in"><strong>Sign In</strong></a>
         </ul>
@@ -39,17 +42,36 @@
     </div>
     <!-- End Top Bar -->
     <div class="callout small" style="background: #4d6d9a;"></div>
-    <div class="grid x grid-margin-x">
-      <div class="large-12 cell center-align">
-        <div class="card" style="margin-bottom: 0rem;">
-          <div class="card-image">
-            <img src="assets/book-shelf.jpg" id="border-image" />
+    <div class="card-image" id="border-image"></div>
+    <div class="callout"></div>
+    <div class="grid-container" id="journalContent"></div>
+
+    <!-- Footer -->
+    <div id="footer">
+      <div class="grid-x">
+        <div class="medium cell">
+          <p style="margin-bottom: 0.5rem;">
+            &copy Copyright 2020 Charles McRae Peavy
+          </p>
+          <div class="medium cell">
+            <p>
+              Connect
+              <a href="#"><i class="fa fa-envelope"></i></a>
+              <a href="#"><i class="fa fa-facebook"></i></a>
+              <a href="linkedin.com/in/mcraepv"
+                ><i class="fa fa-linkedin"></i>
+              </a>
+              <a href="https://www.instagram.com/mcraepv/"
+                ><i class="fa fa-instagram text-light social"></i>
+              </a>
+              <a href="https://github.com/mcraepv"
+                ><i class="fa fa-github text-light social"></i
+              ></a>
+            </p>
           </div>
         </div>
       </div>
     </div>
-    <div class="callout"></div>
-    <div class="grid-container" id="journalContent"></div>
 
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script
