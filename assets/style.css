@@ -17,8 +17,6 @@ h2 {
   border-radius: 10px;
 }
 
-/* Enter Page*/
-
 .welcome {
   font-family: "Homemade Apple", cursive;
   font-size: 40px;
@@ -32,7 +30,6 @@ h2 {
   text-align: center;
 }
 
-/*Search Page*/
 .boxShadow {
   box-shadow: 10px 10px 5px grey;
 }
@@ -119,7 +116,7 @@ h2 {
 }
 
 #footer {
-  height: 5vh;
+  height: 6vh;
   position: fixed;
   bottom: 0px;
   left: 0px;
