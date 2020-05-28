@@ -34,6 +34,10 @@ https://developers.google.com/books
 
 https://firebase.google.com/
 
+### Font Awesome
+
+https://fontawesome.com/
+
 ## License
 
 MIT License
