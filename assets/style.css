@@ -7,6 +7,10 @@ h2 {
   font-family: "Abel", sans-serif;
 }
 
+p {
+  margin-bottom: 0.5rem;
+}
+
 .callout {
   background-color: #022140;
   color: whitesmoke;
