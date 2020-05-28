@@ -134,6 +134,16 @@ p {
   text-align: center;
 }
 
+#saveIcon {
+  font-size: 30px;
+  color: gray;
+}
+
+#savedIcon {
+  font-size: 30px;
+  color: gold;
+}
+
 /* Color Scheme - blues & greys
 background-color: #938E94; light grey
 background-color: #5D5C61; dark grey
