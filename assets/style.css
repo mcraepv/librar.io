@@ -11,6 +11,7 @@ h2 {
   background-color: #022140;
   color: whitesmoke;
   margin: 0rem;
+  margin-bottom: 2rem;
 }
 
 .rounded {
@@ -67,7 +68,6 @@ h2 {
   background-color: rgba(54, 54, 54, 0.8);
   color: #fefefe;
   box-shadow: 10px 10px 5px grey;
-  margin-top: 2rem;
 }
 
 .translucent-form-overlay h3,
@@ -111,10 +111,6 @@ h2 {
   background-image: url("book-shelf.jpg");
   background-size: cover;
   background-position-y: 15%;
-}
-
-#aboutCard {
-  margin-top: 3rem;
 }
 
 #searchReset {
