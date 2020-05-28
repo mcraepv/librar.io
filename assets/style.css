@@ -1,5 +1,5 @@
 body {
-  background-image: url("./assets/grey-background.jpg");
+  background-image: url("grey-background.jpg");
 }
 
 h1,
@@ -128,6 +128,16 @@ h2 {
   font-family: "Abel", sans-serif;
   width: 100%;
   text-align: center;
+}
+
+#saveIcon {
+  font-size: 30px;
+  color: gray;
+}
+
+#savedIcon {
+  font-size: 30px;
+  color: gold;
 }
 
 /* Color Scheme - blues & greys

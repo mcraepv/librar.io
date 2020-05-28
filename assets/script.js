@@ -40,28 +40,33 @@ $(document).ready(function () {
       });
   });
   function signInCheck() {
-    if (user) {
-      db.collection("users").doc(uid).set({
-        name: name,
-      });
-      buildJournals();
-    } else {
-      var row = $("<div>").addClass("grid-x grid-margin-x align-center");
-      var cell = $("<div>").addClass("medium-6 cell text-center");
-      var card = $("<div>").addClass("card boxShadow rounded");
-      var cardDivider = $("<div>").addClass("card-divider");
-      var cardSection = $("<div>").addClass("card-section");
-      var cardTitle = $("<h3>").text("No book journals found.");
-      cardDivider.append(cardTitle);
-      var cardText = $("<p>").text(
-        "Please sign in with Google to create a new journal!"
-      );
-      cardSection.append(cardText);
-      card.append(cardDivider, cardSection);
-      cell.append(card);
-      row.append(cell);
-      $("#journalContent").append(row);
-    }
+    firebase.auth().onAuthStateChanged(function (user) {
+      console.log(user);
+      // signInCheck();
+      uid = user.uid;
+      if (user) {
+        db.collection("users").doc(uid).set({
+          name: name,
+        });
+        buildJournals();
+      } else {
+        var row = $("<div>").addClass("grid-x grid-margin-x align-center");
+        var cell = $("<div>").addClass("medium-6 cell text-center");
+        var card = $("<div>").addClass("card boxShadow rounded");
+        var cardDivider = $("<div>").addClass("card-divider");
+        var cardSection = $("<div>").addClass("card-section");
+        var cardTitle = $("<h3>").text("No book journals found.");
+        cardDivider.append(cardTitle);
+        var cardText = $("<p>").text(
+          "Please sign in with Google to create a new journal!"
+        );
+        cardSection.append(cardText);
+        card.append(cardDivider, cardSection);
+        cell.append(card);
+        row.append(cell);
+        $("#journalContent").append(row);
+      }
+    });
   }
   signInCheck();
   //new journal btn click listener
