@@ -1,4 +1,3 @@
-// https://www.googleapis.com/books/v1/volumes?q=flowers+inauthor:keyes&key=yourAPIKey
 $(document).ready(function () {
   var firebaseConfig = {
     apiKey: "AIzaSyCCSPzvoB10U9Wq36T3ZkatJY3CvohgaLY",
@@ -48,9 +47,6 @@ $(document).ready(function () {
       $("#sign-in").html("<strong>Sign Out</strong>");
       $("#sign-in").attr("id", "sign-out");
       // ...
-    } else {
-      // User is signed out.
-      // ...
     }
   });
   //sign out click listener
@@ -62,6 +58,9 @@ $(document).ready(function () {
         $("#journalContent").empty();
         $("#sign-out").html("<strong>Sign In</strong>");
         $("#sign-out").attr("id", "sign-in");
+        $(document).data("initialSearch").replaceAll("#searchContent");
+        $(document).data("initialSearch", $("#searchContent").clone(true));
+        user = firebase.auth.UserInfo;
       });
   });
   //search click listener
@@ -139,7 +138,6 @@ $(document).ready(function () {
         var saveIcon = $("<i>").addClass("fa fa-star");
         saveIcon.attr("id", "saveIcon");
         var cardSection = $("<div>").addClass("card-section text-center");
-        //img grab
         var img = $("<img>").attr("src", bookInfo.imageLinks.smallThumbnail);
         img.attr("alt", `The cover of ${bookInfo.title}`);
         img.attr("data-tooltip", "");
@@ -156,7 +154,6 @@ $(document).ready(function () {
         img.addClass("right");
         imgHyper.attr("target", "_blank");
         imgHyper.append(img);
-        //img grab end
         var snippetText = bookInfo.description;
         if (snippetText.length > 250) {
           snippetText = snippetText.slice(0, 250);
