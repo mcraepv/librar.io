@@ -13,7 +13,6 @@ $(document).ready(function () {
   firebase.initializeApp(firebaseConfig);
   const db = firebase.firestore();
   var user = firebase.auth.UserInfo;
-  console.log(user);
   var name = "";
   var uid = "";
   $("#sign-in").on("click", function (event) {
@@ -42,7 +41,6 @@ $(document).ready(function () {
   firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
       // User is signed in.
-      console.log(user);
       var displayName = user.displayName;
       var email = user.email;
       var emailVerified = user.emailVerified;
@@ -59,11 +57,10 @@ $(document).ready(function () {
   $(document).on("click", "#searchBtn", searchFn);
   $(document).keydown(function (e) {
     if (e.keyCode === 13) {
-      console.log("Enter");
       searchFn();
     }
   });
-
+  $(document).data("initialSearch", $("#searchContent").clone(true));
   function searchFn() {
     const apiKey = "AIzaSyDDr4fmK6B3-3yS-S2X2d6X29EXQ6p8Sq0";
 
@@ -93,8 +90,6 @@ $(document).ready(function () {
     $.ajax(url, {
       method: "GET",
     }).then(function (data) {
-      console.log(data);
-      $(document).data("initialSearch", $("#searchContent").clone(true));
       $("#searchContent").empty();
       const books = data.items;
       const resultsContainer = $("<div>").addClass("grid-container");
@@ -111,10 +106,17 @@ $(document).ready(function () {
       resetBtnRow.append(resetBtnCell);
       resultsContainer.append(resetBtnRow);
       $("#searchContent").append(resultsContainer);
-      $("#searchReset").on("click", function () {
-        console.log("click");
-        $(document).data("initialSearch").replaceAll("#searchContent");
-      });
+      var titleRow = $("<div>").addClass("grid-x grid-margin-x align-center");
+      titleRow.attr("id", "titleRow");
+      var titleCell = $("<div>").addClass("medium-6 cell");
+      var titleCard = $("<div>").addClass("card boxShadow rounded");
+      var titleDivider = $("<div>").addClass("card-divider");
+      var title = $("<h3>").text("Search Results");
+      titleDivider.append(title);
+      titleCard.append(titleDivider);
+      titleCell.append(titleCard);
+      titleRow.append(titleCell);
+      resultsContainer.append(titleRow);
       for (var i = 0; i < books.length; i++) {
         var book = books[i];
         var bookInfo = book.volumeInfo;
@@ -171,25 +173,91 @@ $(document).ready(function () {
       }
     });
   }
+  //search reset click listener
+  $(document).on("click", "#searchReset", function () {
+    $(document).data("initialSearch").replaceAll("#searchContent");
+    $(document).data("initialSearch", $("#searchContent").clone(true));
+  });
+  //clear btn click listener
   $(document).on("click", "#clearBtn", function () {
     $("#keyword").val("");
     $("#author").val("");
     $("#title").val("");
     $("#genre").val("fiction");
   });
+  //save search icon click listener
   $(document).on("click", "#saveIcon", function () {
-    console.log("click");
     $(this).attr("id", "savedIcon");
     var savedBook = $(this).parent().parent().parent().html();
-    console.log(savedBook);
     var bookTitle = $(this).parent().prev().find("h4").text();
-    console.log(bookTitle);
     db.collection("users")
       .doc(uid)
       .collection("savedBooks")
       .doc(bookTitle)
       .set({
         html: savedBook,
+      });
+  });
+  function loadSavedBooks() {
+    db.collection(`users/${uid}/savedBooks`)
+      .get()
+      .then((snapshot) => {
+        $("#searchContent").empty();
+        const resultsContainer = $("<div>").addClass("grid-container");
+        var resetBtn = $("<a>").addClass(
+          "button large text-center rounded boxShadow"
+        );
+        resetBtn.attr("id", "searchReset");
+        resetBtn.text("Reset Search");
+        var resetBtnCell = $("<div>").addClass("medium-12 cell text-center");
+        var resetBtnRow = $("<div>").addClass(
+          "grid-x grid-margin-x align-center"
+        );
+        resetBtnCell.append(resetBtn);
+        resetBtnRow.append(resetBtnCell);
+        var titleRow = $("<div>").addClass("grid-x grid-margin-x align-center");
+        titleRow.attr("id", "titleRow");
+        var titleCell = $("<div>").addClass("medium-6 cell");
+        var titleCard = $("<div>").addClass("card boxShadow rounded");
+        var titleDivider = $("<div>").addClass("card-divider");
+        var title = $("<h3>").text("Saved Searches");
+        titleDivider.append(title);
+        titleCard.append(titleDivider);
+        titleCell.append(titleCard);
+        titleRow.append(titleCell);
+        resultsContainer.append(resetBtnRow, titleRow);
+        $("#searchContent").append(resultsContainer);
+        snapshot.docs.forEach((doc) => {
+          var bookRef = doc.data().html;
+          var savedBook = $.parseHTML(bookRef);
+          var bookRow = $("<div>").addClass(
+            "grid-x grid-margin-x align-center"
+          );
+          var bookCell = $("<div>").addClass("small-6 cell");
+          bookCell.append(savedBook);
+          bookRow.append(bookCell);
+          resultsContainer.append(bookRow);
+        });
+      });
+  }
+  //saved btn click listener
+  $(document).on("click", "#savedBtn", function () {
+    loadSavedBooks();
+  });
+  //savedIcon click listener
+  $(document).on("click", "#savedIcon", function () {
+    var bookTitle = $(this).parent().prev().find("h4").text();
+    $(this).attr("id", "saveIcon");
+    db.collection("users")
+      .doc(uid)
+      .collection("savedBooks")
+      .doc(bookTitle)
+      .delete()
+      .then(function () {
+        var title = $("#titleRow").find("h3").text();
+        if (title === "Saved Searches") {
+          loadSavedBooks();
+        }
       });
   });
 });

@@ -23,7 +23,6 @@ $(document).ready(function () {
       .then(function (result) {
         // The signed-in user info.
         user = result.user;
-        console.log(user, "user console");
         name = user.displayName;
         uid = user.uid;
         signInCheck();
@@ -41,7 +40,6 @@ $(document).ready(function () {
   });
   function signInCheck() {
     firebase.auth().onAuthStateChanged(function (user) {
-      console.log(user);
       uid = user.uid;
       if (user) {
         db.collection("users").doc(uid).set({
@@ -85,7 +83,7 @@ $(document).ready(function () {
     var newBookBtn = $("<a>").addClass(
       "button large text-center rounded card-btn"
     );
-    newBookBtn.text("Create New Book!");
+    newBookBtn.text("Create New Journal!");
     newBookBtn.attr("id", "newBookBtn");
     var cancelBtn = $("<a>").text("Cancel");
     cancelBtn.addClass("button large text-center rounded boxShadow card-btn");
@@ -118,7 +116,7 @@ $(document).ready(function () {
           var bookCard = $("<div>").addClass("card boxShadow rounded");
           bookCard.attr("id", "journalCard");
           var cardDivider = $("<div>").addClass("card-divider");
-          var journalTitle = $("<p>").text(doc.data().title);
+          var journalTitle = $("<h3>").text(doc.data().title);
           cardDivider.append(journalTitle);
           bookCard.append(cardDivider);
           bookCell.append(bookCard);
@@ -140,9 +138,7 @@ $(document).ready(function () {
     db.collection(`users/${uid}/journals`)
       .get()
       .then((snapshot) => {
-        snapshot.docs.forEach((doc) => {
-          console.log(doc.data());
-        });
+        snapshot.docs.forEach((doc) => {});
       });
     buildJournals();
   });
@@ -155,7 +151,7 @@ $(document).ready(function () {
   var title;
   //journals click listener
   $(document).on("click", "#journalCard", function (event) {
-    title = $(this).find("p").text();
+    title = $(this).find("h3").text();
     entriesRef = db.collection(`users/${uid}/journals/${title}/entries`);
     buildEntries();
   });
@@ -221,34 +217,64 @@ $(document).ready(function () {
   function buildEntries() {
     $("#journalContent").empty();
     newEntryBtnRow = $("<div>").addClass("grid-x grid-padding-x align-center");
-    var newEntryBtnCell = $("<div>").addClass("cell small-4 text-right");
-    var newEntryBtn = $("<a>").text("New Entry");
+    var newEntryBtnCell = $("<div>").addClass("cell small-2 text-right");
+    var newEntryBtn = $("<a>").text("Create New Entry");
     newEntryBtn.addClass("button large text-center rounded boxShadow");
     newEntryBtn.attr("id", "entryBtn");
-    var backBtnCell = $("<div>").addClass("cell small-4 text-left");
-    var backBtn = $("<a>").text("Back");
+    var backBtnCell = $("<div>").addClass("cell small-2");
+    var backBtn = $("<a>").text("Back to Journals");
     backBtn.addClass("button large text-center rounded boxShadow");
     backBtn.attr("id", "backBtn");
     backBtnCell.append(backBtn);
+    var deleteCell = $("<div>").addClass("cell small-2 text-left");
+    var deleteBtn = $("<a>").text("Delete Journal");
+    deleteBtn.addClass("button large text-center rounded boxShadow");
+    deleteBtn.attr("id", "deleteBtn");
+    deleteCell.append(deleteBtn);
     newEntryBtnCell.append(newEntryBtn);
-    newEntryBtnRow.append(newEntryBtnCell, backBtnCell);
+    newEntryBtnRow.append(newEntryBtnCell, backBtnCell, deleteCell);
     $("#journalContent").append(newEntryBtnRow);
     entriesRef.get().then((snapshot) => {
+      var titleRow = $("<div>").addClass("grid-x grid-padding-x align-center");
+      var titleCell = $("<div>").addClass("cell small-6 text-right");
+      var titleCard = $("<div>").addClass("card boxShadow rounded");
+      var titleDivider = $("<div>").addClass("card-divider");
+      var titleText = $("<h3>").text(`${title} Journal`);
+      titleDivider.append(titleText);
+      titleCard.append(titleDivider);
+      titleCell.append(titleCard);
+      titleRow.append(titleCell);
       snapshot.docs.forEach((doc) => {
         var entryRow = $("<div>").addClass("grid-x grid-margin-x align-center");
         var entryCell = $("<div>").addClass("medium-6 cell");
         var entryCard = $("<div>").addClass("card boxShadow rounded");
         var cardDivider = $("<div>").addClass("card-divider");
-        var entryTitle = $("<p>").text(doc.data().entryTitle);
+        var entryTitle = $("<h4>").text(doc.data().entryTitle);
         var cardSection = $("<div>").addClass("card-section");
         var entryText = $("<p>").text(doc.data().entryText);
+        var deleteEntryBtn = $("<a>").text("Delete Entry");
+        deleteEntryBtn.addClass("button large text-center rounded");
+        deleteEntryBtn.attr("id", "deleteEntryBtn");
         cardDivider.append(entryTitle);
-        cardSection.append(entryText);
+        cardSection.append(entryText, deleteEntryBtn);
         entryCard.append(cardDivider, cardSection);
         entryCell.append(entryCard);
         entryRow.append(entryCell);
         $("#journalContent").prepend(entryRow);
       });
+      $("#journalContent").prepend(titleRow);
     });
   }
+  //delete journal button click listener
+  $(document).on("click", "#deleteBtn", function () {
+    db.collection(`users/${uid}/journals`)
+      .doc(title)
+      .delete()
+      .then(buildJournals());
+  });
+  //delete entry btn click listener
+  $(document).on("click", "#deleteEntryBtn", function () {
+    var titleRef = $(this).parent().prev().find("h4").text();
+    entriesRef.doc(titleRef).delete().then(buildEntries);
+  });
 });
