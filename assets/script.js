@@ -15,6 +15,7 @@ $(document).ready(function () {
   var user;
   var name = "";
   var uid = "";
+  //sign in click listener
   $("#sign-in").on("click", function (event) {
     var provider = new firebase.auth.GoogleAuthProvider();
     firebase
@@ -25,7 +26,6 @@ $(document).ready(function () {
         user = result.user;
         name = user.displayName;
         uid = user.uid;
-        signInCheck();
       })
       .catch(function (error) {
         // Handle Errors here.
@@ -38,34 +38,45 @@ $(document).ready(function () {
         // ...
       });
   });
-  function signInCheck() {
-    firebase.auth().onAuthStateChanged(function (user) {
+  firebase.auth().onAuthStateChanged(function (user) {
+    if (user) {
       uid = user.uid;
-      if (user) {
-        db.collection("users").doc(uid).set({
-          name: name,
-        });
-        buildJournals();
-      } else {
-        var row = $("<div>").addClass("grid-x grid-margin-x align-center");
-        var cell = $("<div>").addClass("medium-6 cell text-center");
-        var card = $("<div>").addClass("card boxShadow rounded");
-        var cardDivider = $("<div>").addClass("card-divider");
-        var cardSection = $("<div>").addClass("card-section");
-        var cardTitle = $("<h3>").text("No book journals found.");
-        cardDivider.append(cardTitle);
-        var cardText = $("<p>").text(
-          "Please sign in with Google to create a new journal!"
-        );
-        cardSection.append(cardText);
-        card.append(cardDivider, cardSection);
-        cell.append(card);
-        row.append(cell);
-        $("#journalContent").append(row);
-      }
-    });
-  }
-  signInCheck();
+      db.collection("users").doc(uid).set({
+        name: name,
+      });
+      $("#sign-in").html("<strong>Sign Out</strong>");
+      $("#sign-in").attr("id", "sign-out");
+      buildJournals();
+    } else {
+      var row = $("<div>").addClass("grid-x grid-margin-x align-center");
+      var cell = $("<div>").addClass("medium-6 cell text-center");
+      var card = $("<div>").addClass("card boxShadow rounded");
+      var cardDivider = $("<div>").addClass("card-divider");
+      var cardSection = $("<div>").addClass("card-section");
+      var cardTitle = $("<h3>").text("No book journals found.");
+      cardDivider.append(cardTitle);
+      var cardText = $("<p>").text(
+        "Please sign in with Google to create a new journal!"
+      );
+      cardSection.append(cardText);
+      card.append(cardDivider, cardSection);
+      cell.append(card);
+      row.append(cell);
+      $("#journalContent").append(row);
+    }
+  });
+
+  //sign out click listener
+  $(document).on("click", "#sign-out", function () {
+    firebase
+      .auth()
+      .signOut()
+      .then(function () {
+        $("#journalContent").empty();
+        $("#sign-out").html("<strong>Sign In</strong>");
+        $("#sign-out").attr("id", "sign-in");
+      });
+  });
   //new journal btn click listener
   $(document).on("click", "#journalBtn", newBook);
   function newBook(event) {
