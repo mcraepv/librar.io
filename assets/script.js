@@ -18,6 +18,9 @@ $(document).ready(function () {
   //sign in click listener
   $("#sign-in").on("click", function (event) {
     var provider = new firebase.auth.GoogleAuthProvider();
+    provider.setCustomParameters({
+      prompt: "select_account",
+    });
     firebase
       .auth()
       .signInWithPopup(provider)
@@ -75,6 +78,7 @@ $(document).ready(function () {
         $("#journalContent").empty();
         $("#sign-out").html("<strong>Sign In</strong>");
         $("#sign-out").attr("id", "sign-in");
+        user = firebase.auth.UserInfo;
       });
   });
   //new journal btn click listener

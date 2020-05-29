@@ -17,6 +17,9 @@ $(document).ready(function () {
   //sign in click listener
   $("#sign-in").on("click", function (event) {
     var provider = new firebase.auth.GoogleAuthProvider();
+    provider.setCustomParameters({
+      prompt: "select_account",
+    });
     firebase
       .auth()
       .signInWithPopup(provider)
