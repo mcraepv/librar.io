@@ -42,7 +42,7 @@ https://fontawesome.com/
 
 MIT License
 
-Copyright (c) 2020 Charles McRae Peavy
+Copyright (c) 2020 Charles McRae Peavy & Mina Ghaffar
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -66,10 +66,20 @@ SOFTWARE.
 
 ### Charles McRae Peavy
 
+#### LinkedIn
+
 https://www.linkedin.com/in/mcraepv/
+
+#### Github
+
 https://github.com/mcraepv
 
 ### Mariam Ghaffar
 
+#### LinkedIn
+
 https://www.linkedin.com/in/mariam-ghaffar-22852957/
+
+#### Github
+
 https://github.com/mghaffar89
