@@ -15,32 +15,33 @@ $(document).ready(function () {
   var user = firebase.auth.UserInfo;
   var name = "";
   var uid = "";
+  //sign in click listener
   $("#sign-in").on("click", function (event) {
     var provider = new firebase.auth.GoogleAuthProvider();
     firebase
       .auth()
       .signInWithPopup(provider)
       .then(function (result) {
-        // The signed-in user info.
         user = result.user;
         name = user.displayName;
         uid = user.uid;
       })
       .catch(function (error) {
-        // Handle Errors here.
         var errorCode = error.code;
         var errorMessage = error.message;
-        // The email of the user's account used.
-        var email = error.email;
-        // The firebase.auth.AuthCredential type that was used.
         var credential = error.credential;
-        // ...
       });
   });
   var uid = "";
   firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
       uid = user.uid;
+      if (
+        $("#searchContent").find("h3").text() ===
+        "Please sign in to see saved searches."
+      ) {
+        loadSavedBooks();
+      }
       db.collection("users").doc(uid).set({
         name: name,
       });
@@ -209,46 +210,75 @@ $(document).ready(function () {
       });
   });
   function loadSavedBooks() {
-    db.collection(`users/${uid}/savedBooks`)
-      .get()
-      .then((snapshot) => {
-        $("#searchContent").empty();
-        const resultsContainer = $("<div>").addClass("grid-container");
-        var resetBtn = $("<a>").addClass(
-          "button large text-center rounded boxShadow"
-        );
-        resetBtn.attr("id", "searchReset");
-        resetBtn.text("Reset Search");
-        var resetBtnCell = $("<div>").addClass("medium-12 cell text-center");
-        var resetBtnRow = $("<div>").addClass(
-          "grid-x grid-margin-x align-center"
-        );
-        resetBtnCell.append(resetBtn);
-        resetBtnRow.append(resetBtnCell);
-        var titleRow = $("<div>").addClass("grid-x grid-margin-x align-center");
-        titleRow.attr("id", "titleRow");
-        var titleCell = $("<div>").addClass("medium-6 cell");
-        var titleCard = $("<div>").addClass("card boxShadow rounded");
-        var titleDivider = $("<div>").addClass("card-divider");
-        var title = $("<h3>").text("Saved Searches");
-        titleDivider.append(title);
-        titleCard.append(titleDivider);
-        titleCell.append(titleCard);
-        titleRow.append(titleCell);
-        resultsContainer.append(resetBtnRow, titleRow);
-        $("#searchContent").append(resultsContainer);
-        snapshot.docs.forEach((doc) => {
-          var bookRef = doc.data().html;
-          var savedBook = $.parseHTML(bookRef);
-          var bookRow = $("<div>").addClass(
+    if (user) {
+      db.collection(`users/${uid}/savedBooks`)
+        .get()
+        .then((snapshot) => {
+          $("#searchContent").empty();
+          const resultsContainer = $("<div>").addClass("grid-container");
+          var resetBtn = $("<a>").addClass(
+            "button large text-center rounded boxShadow"
+          );
+          resetBtn.attr("id", "searchReset");
+          resetBtn.text("Reset Search");
+          var resetBtnCell = $("<div>").addClass("medium-12 cell text-center");
+          var resetBtnRow = $("<div>").addClass(
             "grid-x grid-margin-x align-center"
           );
-          var bookCell = $("<div>").addClass("small-6 cell");
-          bookCell.append(savedBook);
-          bookRow.append(bookCell);
-          resultsContainer.append(bookRow);
+          resetBtnCell.append(resetBtn);
+          resetBtnRow.append(resetBtnCell);
+          var titleRow = $("<div>").addClass(
+            "grid-x grid-margin-x align-center"
+          );
+          titleRow.attr("id", "titleRow");
+          var titleCell = $("<div>").addClass("medium-6 cell");
+          var titleCard = $("<div>").addClass("card boxShadow rounded");
+          var titleDivider = $("<div>").addClass("card-divider");
+          var title = $("<h3>").text("Saved Searches");
+          titleDivider.append(title);
+          titleCard.append(titleDivider);
+          titleCell.append(titleCard);
+          titleRow.append(titleCell);
+          resultsContainer.append(resetBtnRow, titleRow);
+          $("#searchContent").append(resultsContainer);
+          snapshot.docs.forEach((doc) => {
+            var bookRef = doc.data().html;
+            var savedBook = $.parseHTML(bookRef);
+            var bookRow = $("<div>").addClass(
+              "grid-x grid-margin-x align-center"
+            );
+            var bookCell = $("<div>").addClass("small-6 cell");
+            bookCell.append(savedBook);
+            bookRow.append(bookCell);
+            resultsContainer.append(bookRow);
+          });
         });
-      });
+    } else {
+      $("#searchContent").empty();
+      const resultsContainer = $("<div>").addClass("grid-container");
+      var resetBtn = $("<a>").addClass(
+        "button large text-center rounded boxShadow"
+      );
+      resetBtn.attr("id", "searchReset");
+      resetBtn.text("Reset Search");
+      var resetBtnCell = $("<div>").addClass("medium-12 cell text-center");
+      var resetBtnRow = $("<div>").addClass(
+        "grid-x grid-margin-x align-center"
+      );
+      resetBtnCell.append(resetBtn);
+      resetBtnRow.append(resetBtnCell);
+      var row = $("<div>").addClass("grid-x grid-margin-x align-center");
+      var cell = $("<div>").addClass("medium-6 cell");
+      var card = $("<div>").addClass("card boxShadow rounded");
+      var divider = $("<div>").addClass("card-divider");
+      var error = $("<h3>").text("Please sign in to see saved searches.");
+      divider.append(error);
+      card.append(divider);
+      cell.append(card);
+      row.append(cell);
+      resultsContainer.append(resetBtnRow, row);
+      $("#searchContent").append(resultsContainer);
+    }
   }
   //saved btn click listener
   $(document).on("click", "#savedBtn", function () {
