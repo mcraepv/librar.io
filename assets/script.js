@@ -225,8 +225,7 @@ $(document).ready(function () {
   });
   //cancel click listener
   $(document).on("click", "#cancelBtn", function () {
-    $("entryRow").remove();
-    $("#journalContent").append(newEntryBtnRow);
+    buildEntries();
   });
   //builds journal entries
   function buildEntries() {
